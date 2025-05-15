@@ -16,7 +16,7 @@ function DataProducts({
   slug?: string | string[];
 }) {
 
-  const runtimeConfig = useContext(RuntimeConfigContext);
+  const {naavreCatalogueServiceUrl} = useContext(RuntimeConfigContext);
 
   const {data: session} = useSession()
   const [data, setData] = useState<GeoJsonObject>({'type': 'Feature'})
@@ -33,9 +33,12 @@ function DataProducts({
 
   const getFeatures = useCallback(async () => {
   try {
-    const accessToken = await getRefreshedAccessToken(runtimeConfig.basePath);
+    if (!naavreCatalogueServiceUrl) {
+      return
+    }
+    const accessToken = await getRefreshedAccessToken();
     const res = await fetch(
-      `${runtimeConfig.naavreCatalogueServiceUrl}/geo-data-products/?format=json&in_bbox=${map.getBounds().toBBoxString()}&virtual-lab=${slug}`,
+      `${naavreCatalogueServiceUrl}/geo-data-products/?format=json&in_bbox=${map.getBounds().toBBoxString()}&virtual-lab=${slug}`,
       {
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +55,7 @@ function DataProducts({
   } catch (error) {
     console.log(error);
   }
-  }, [map, runtimeConfig, session?.accessToken, slug])
+  }, [map, naavreCatalogueServiceUrl, session?.accessToken, slug])
 
 
   const onEachLayer = useCallback((layer: L.Layer) => {

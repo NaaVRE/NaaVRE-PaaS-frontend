@@ -8,7 +8,7 @@ import {getRefreshedAccessToken} from "@/lib/auth";
 
 export default function DataProducts({slug}: {slug?: string | string[]}) {
 
-  const runtimeConfig = useContext(RuntimeConfigContext);
+  const {naavreCatalogueServiceUrl} = useContext(RuntimeConfigContext);
 
   const {data: session} = useSession()
   const [assets, setAssets] = useState([])
@@ -16,15 +16,18 @@ export default function DataProducts({slug}: {slug?: string | string[]}) {
   const [backendError, setBackendError] = useState(false)
 
   const fetchAssets = useCallback(async () => {
+    if (!naavreCatalogueServiceUrl) {
+      return
+    }
 
     setAssets([]);
     setLoadingAssets(true);
     setBackendError(false);
 
-    const accessToken = await getRefreshedAccessToken(runtimeConfig.basePath);
+    const accessToken = await getRefreshedAccessToken();
 
     const res = await fetch(
-      `${runtimeConfig.naavreCatalogueServiceUrl}/data-products/?virtual_lab=${slug}`,
+      `${naavreCatalogueServiceUrl}/data-products/?virtual_lab=${slug}`,
       {
         headers: {
           'Authorization': `Bearer ${accessToken || session?.accessToken}`,
@@ -48,7 +51,7 @@ export default function DataProducts({slug}: {slug?: string | string[]}) {
     }
 
     setLoadingAssets(false);
-  }, [runtimeConfig, session?.accessToken, slug]);
+  }, [naavreCatalogueServiceUrl, session?.accessToken, slug]);
 
   useEffect(() => {
       fetchAssets().then()

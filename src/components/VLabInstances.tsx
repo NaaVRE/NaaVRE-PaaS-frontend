@@ -18,7 +18,7 @@ interface VLabInstance {
 
 export default function VLabInstances({vlab, slug}: Props) {
 
-  const publicRuntimeConfig = useContext(RuntimeConfigContext);
+  const {naavreCatalogueServiceUrl} = useContext(RuntimeConfigContext);
 
   const session = useSession()
 
@@ -27,6 +27,9 @@ export default function VLabInstances({vlab, slug}: Props) {
   const [hideInstance, setHideInstance] = useState(false)
 
   async function registerInstance() {
+    if (!naavreCatalogueServiceUrl) {
+      console.log("Cannot register instance because naavreCatalogueServiceUrl is missing")
+    }
     if (
       hideInstance
       || (session.status != "authenticated")
@@ -35,7 +38,7 @@ export default function VLabInstances({vlab, slug}: Props) {
     }
 
     const username = session.data.user?.name
-    const accessToken = await getRefreshedAccessToken(publicRuntimeConfig.basePath)
+    const accessToken = await getRefreshedAccessToken()
 
     const requestOptions: RequestInit = {
       method: "POST",
@@ -49,18 +52,19 @@ export default function VLabInstances({vlab, slug}: Props) {
       }),
     }
 
-    const apiUrl = publicRuntimeConfig.naavreCatalogueServiceUrl;
-    return fetch(`${apiUrl}/virtual-lab-instances/`, requestOptions);
+    return fetch(`${naavreCatalogueServiceUrl}/virtual-lab-instances/`, requestOptions);
   }
 
   const fetchVlabInstances = useCallback(async () => {
+    if (!naavreCatalogueServiceUrl) {
+      return
+    }
     if (session.status !== "authenticated") {
       console.log("Not authenticated")
       return
     }
 
-    const apiUrl = publicRuntimeConfig.naavreCatalogueServiceUrl;
-    const res = await fetch(`${apiUrl}/virtual-lab-instances/?virtual_lab=${slug}`, {
+    const res = await fetch(`${naavreCatalogueServiceUrl}/virtual-lab-instances/?virtual_lab=${slug}`, {
       headers: {
         'Authorization': `Bearer ${session.data.accessToken}`
       }
@@ -78,7 +82,7 @@ export default function VLabInstances({vlab, slug}: Props) {
       console.log(e)
       setBackendError(true)
     }
-  }, [publicRuntimeConfig.naavreCatalogueServiceUrl, session.data?.accessToken, session.status, slug]);
+  }, [naavreCatalogueServiceUrl, session.data?.accessToken, session.status, slug]);
 
   useEffect(() => {
     fetchVlabInstances().then()

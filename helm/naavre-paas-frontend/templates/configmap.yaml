@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "naavre-paas-frontend.labels" . | nindent 4 }}
 data:
-  FRONTEND_BASE_PATH: "{{ .Values.conf.basePath }}"
+  NEXT_PUBLIC_BASE_PATH: "{{ .Values.conf.basePath }}"
   NAAVRE_CATALOGUE_SERVICE_URL: "{{ .Values.conf.services.naavreCatalogueServiceUrl }}"
   NEXTAUTH_URL: "https://{{ index (index .Values.ingress.hosts 0) "host" }}/{{ .Values.conf.basePath | trimAll "/" }}/api/auth"
   NEXTAUTH_URL_INTERNAL: "http://localhost:3000/{{ .Values.conf.basePath | trimAll "/" }}/api/auth"

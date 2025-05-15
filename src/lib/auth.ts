@@ -1,4 +1,5 @@
-export async function getRefreshedAccessToken(basePath: string): Promise<string | undefined> {
+export async function getRefreshedAccessToken(): Promise<string | undefined> {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
   try {
     const res = await fetch(`${basePath}/api/auth/session`);
     const dat = await res.json();

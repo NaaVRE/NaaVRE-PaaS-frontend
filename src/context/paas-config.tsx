@@ -1,35 +1,32 @@
-import {useEffect, useState, createContext, ReactNode} from "react";
+import {useEffect, useState, createContext, ReactNode, useContext} from "react";
 
-import {RuntimeConfig} from "@/lib/runtime-config";
+import {RuntimeConfigContext} from "@/context/runtime-config";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+const defaultPaasConfig = {
+  title: "Virtual Lab environments",
+  description: "A collection of virtual lab environments",
+  documentation_url: "https://github.com/QCDIS/NaaVRE/blob/main/README.md",
+  site_icon: `${basePath}/logo-lifewatch-eric-small.png`,
+}
 
 export const PaasConfigContext = createContext({
-  paasConfig: {
-    title: "",
-    description: "",
-    documentation_url: "",
-    site_icon: "",
-  },
+  paasConfig: defaultPaasConfig,
   paasConfigLoading: true,
 });
 
-export function PaasConfigProvider({
-  runtimeConfig,
-  children,
-}: {
-  runtimeConfig: RuntimeConfig,
-  children: ReactNode,
-}) {
-  const [paasConfig, setPaasConfig] = useState({
-    title: "Virtual Lab environments",
-    description: "A collection of virtual lab environments",
-    documentation_url: "https://github.com/QCDIS/NaaVRE/blob/main/README.md",
-    site_icon: `${runtimeConfig.staticFolder}/logo-lifewatch-eric-small.png`,
-  })
+export function PaasConfigProvider({children}: { children: ReactNode }) {
+
+
+  const [paasConfig, setPaasConfig] = useState(defaultPaasConfig);
   const [paasConfigLoading, setPaasConfigLoading] = useState(true)
+  const {naavreCatalogueServiceUrl} = useContext(RuntimeConfigContext);
 
   useEffect(() => {
-    const apiUrl = runtimeConfig.naavreCatalogueServiceUrl;
-    fetch(`${apiUrl}/paas-configuration/`)
+    if (!naavreCatalogueServiceUrl) {
+      return
+    }
+    fetch(`${naavreCatalogueServiceUrl}/paas-configuration/`)
       .then((res) => res.json())
       .then((data) => {
         if (data.count > 0) {
@@ -41,7 +38,7 @@ export function PaasConfigProvider({
         console.log(error)
         setPaasConfigLoading(false)
       });
-  }, [runtimeConfig.naavreCatalogueServiceUrl]);
+  }, [naavreCatalogueServiceUrl]);
 
   return (
     <PaasConfigContext.Provider value={{paasConfig: paasConfig, paasConfigLoading: paasConfigLoading}}>

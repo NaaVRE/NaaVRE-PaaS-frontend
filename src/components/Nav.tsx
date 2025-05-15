@@ -7,7 +7,6 @@ import React, {Fragment, useContext, useEffect} from "react";
 import {PaasConfigContext} from "@/context/paas-config";
 import clsx from "clsx";
 import {usePathname} from "next/navigation";
-import {RuntimeConfigContext} from "@/context/runtime-config";
 
 const menuPages = [
   {
@@ -26,9 +25,9 @@ export default function Nav() {
   const pathname = usePathname();
 
   const {paasConfig, paasConfigLoading} = useContext(PaasConfigContext)
-  const runtimeConfig = useContext(RuntimeConfigContext)
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
 
-  const signOutOptions = {callbackUrl: runtimeConfig.basePath, shouldRedirect: true}
+  const signOutOptions = {callbackUrl: basePath, shouldRedirect: true}
   const signInProvider = 'keycloak'
 
   useEffect(() => {

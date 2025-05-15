@@ -1,9 +1,22 @@
-import {createContext} from "react";
+"use client";
 
-import {RuntimeConfig} from "@/lib/runtime-config";
+import {createContext, ReactNode, useEffect, useState} from "react";
 
-export const RuntimeConfigContext = createContext<RuntimeConfig>({
-  basePath: "",
-  staticFolder: "",
-  naavreCatalogueServiceUrl: "",
-})
+import {defaultRuntimeConfig, RuntimeConfig} from "@/lib/runtime-config";
+import {getRuntimeConfigAction} from "@/app/actions";
+
+export const RuntimeConfigContext = createContext<RuntimeConfig>(defaultRuntimeConfig);
+
+export function RuntimeConfigProvider({children}: { children: ReactNode }) {
+  const [runtimeConfig, setRuntimeConfig] = useState<RuntimeConfig>(defaultRuntimeConfig);
+
+  useEffect(() => {
+    getRuntimeConfigAction().then(res => setRuntimeConfig(res));
+  }, [])
+
+  return (
+    <RuntimeConfigContext.Provider value={runtimeConfig}>
+      {children}
+    </RuntimeConfigContext.Provider>
+  )
+}

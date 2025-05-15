@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import React from "react";
-import getRuntimeConfig from "@/lib/runtime-config";
 
 export default function Page() {
-  const {staticFolder} = getRuntimeConfig();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
   return (
       <div className="rounded shadow-lg bg-white p-8">
         <h1 className="text-2xl text-gray-800 mb-8">
@@ -18,7 +17,7 @@ export default function Page() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="LifeWatch ERIC logo"
-              src={`${staticFolder}/logo-lifewatch-eric-medium.png`}
+              src={`${basePath}/logo-lifewatch-eric-medium.png`}
               width="150"
               className="m-10"
             />
@@ -27,7 +26,7 @@ export default function Page() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="University of Amsterdam logo"
-              src={`${staticFolder}/logo-uva-medium.png`}
+              src={`${basePath}/logo-uva-medium.png`}
               width="170"
               className="m-10"
             />

@@ -5,24 +5,17 @@ import {ReactNode} from "react";
 
 import '@/globals.css';
 import {PaasConfigProvider} from '@/context/paas-config';
-import {RuntimeConfig} from "@/lib/runtime-config";
-import {RuntimeConfigContext} from "@/context/runtime-config";
+import {RuntimeConfigProvider} from "@/context/runtime-config";
 
-export default function Providers({
-  runtimeConfig,
-  children,
-}:
-{
-  runtimeConfig: RuntimeConfig,
-  children: ReactNode,
-}) {
+export default function Providers({children}: { children: ReactNode }) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
   return (
-    <SessionProvider basePath={`${runtimeConfig.basePath}/api/auth`}>
-      <RuntimeConfigContext value={runtimeConfig}>
-        <PaasConfigProvider runtimeConfig={runtimeConfig}>
+    <SessionProvider basePath={`${basePath}/api/auth`}>
+      <RuntimeConfigProvider>
+        <PaasConfigProvider>
           {children}
         </PaasConfigProvider>
-      </RuntimeConfigContext>
+      </RuntimeConfigProvider>
     </SessionProvider>
   )
 }

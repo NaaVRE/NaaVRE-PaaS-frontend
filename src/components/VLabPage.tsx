@@ -21,8 +21,14 @@ export default function VLabPage({slug}: { slug: string }) {
   const {naavreCatalogueServiceUrl} = useContext(RuntimeConfigContext);
   const [backendError, setBackendError] = useState(false);
   const [vlab, setVLab] = useState<VLab>(defaultVLab);
+  const [vlabLoading, setVlabLoading] = useState(true)
 
   const getVLabData = useCallback(async () => {
+    if (!naavreCatalogueServiceUrl) {
+      return
+    }
+    setVlabLoading(true);
+    setBackendError(false);
     try {
       const res = await fetch(`${naavreCatalogueServiceUrl}/virtual-labs/${slug}/`);
       const data = await res.json();
@@ -36,6 +42,7 @@ export default function VLabPage({slug}: { slug: string }) {
       console.error(error)
       setBackendError(true);
     }
+    setVlabLoading(false);
   }, [naavreCatalogueServiceUrl, slug])
 
   useEffect(() => {
@@ -45,7 +52,11 @@ export default function VLabPage({slug}: { slug: string }) {
   return (
     <>
       <div className="rounded shadow-lg bg-white p-8">
-        <VLabDescription vlab={vlab} backendError={backendError}/>
+        <VLabDescription
+          vlab={vlab}
+          vlabLoading={vlabLoading}
+          backendError={backendError}
+        />
       </div>
       {sessionStatus === "authenticated" ? (
         <>

@@ -123,7 +123,7 @@ tolerations: []
 affinity: {}
 
 conf:
-  # Base path. This cannot be configured at run time (Next.js limitation). It should match the value of FRONTEND_BASE_PATH used when building the docker image.
+  # Base path. This cannot be configured at run time (Next.js limitation). It should match the value of NEXT_PUBLIC_BASE_PATH used when building the docker image.
   basePath: /vreapp
   # Open ID Connect (OIDC) configuration
   oidc:
