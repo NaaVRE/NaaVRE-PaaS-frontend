@@ -1,0 +1,134 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "user",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00.000Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "other-user",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00.000Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "oidc_jwt_auth.oidcuser",
+    "pk": "00000000-0000-0000-0000-000000000000",
+    "fields": {
+      "user": 2
+    }
+  },
+  {
+    "model": "oidc_jwt_auth.oidcuser",
+    "pk": "00000000-0000-0000-0000-000000000001",
+    "fields": {
+      "user": 3
+    }
+  },
+  {
+    "model": "paas_configuration.paasconfiguration",
+    "pk": 1,
+    "fields": {
+      "title": "NaaVRE PaaS dev",
+      "description": "Development version of the NaaVRE PaaS frontend. If you see this text, the PaaS configuration is successfully retrieved from the catalogue service.",
+      "documentation_url": "https://naavre.net",
+      "site_icon": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI0bW0iIGhlaWdodD0iMTExbW0iIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDEyNCAxMTEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggaWQ9ImEiIGQ9Im03NS43IDIuMmUtNGMtOS4wNy0wLjAzNy0xOC4yIDQuNTEtMjMuNiAxMy4zLTQuNDQtMC40MDItOS4xOSAwLjY1MS0xMy4zIDMuMTUtNi4yOC0xLjY4LTEzLTEuMjUtMTkuNS0xLjI1aC0xOS4zdjY2aDE5LjNjOS4zIDAgMTQuNiAwLjA5NTggMTcuNiAwLjg4NyAyLjk3IDAuNzkxIDMuOTMgMS44NiA1Ljk2IDUuMzdoNC4zM2MyLjAzLTMuNTEgMi45OS00LjU4IDUuOTYtNS4zNyAyLjk3LTAuNzkxIDguMjctMC44ODcgMTcuNi0wLjg4N2gxOS4zdi0zOS40YzIuMjEtMC45NjUgMy43NS0zLjE3IDMuNzUtNS43MyAwLTMuNDUtMi44LTYuMjUtNi4yNS02LjI1cy02LjI1IDIuOC02LjI1IDYuMjVjMCAyLjUxIDEuNTQgNC43MyAzLjc1IDUuNzJ2MzQuNGgtMTQuM2MtOS4zMSAwLTE0LjctMC4wNTIyLTE4LjkgMS4wNS0xLjY4IDAuNDQ4LTMuMDkgMS4xNy00LjMzIDIuMTJ2LTMwLjFjMi4yMS0wLjk2NSAzLjc1LTMuMTcgMy43NS01LjczIDAtMy40NS0yLjgtNi4yNS02LjI1LTYuMjUtMy40NSAwLTYuMjUgMi44LTYuMjUgNi4yNSAwIDIuNTEgMS41NCA0LjczIDMuNzUgNS43MnYzMC4xYy0xLjI0LTAuOTUyLTIuNjUtMS42OC00LjMzLTIuMTMtNC4xNi0xLjExLTkuNTUtMS4wNS0xOC45LTEuMDVoLTE0LjN2LTU2aDE0LjNjNi43MyAwIDExLjMgMC4wNTMyIDE0LjUgMC4zOC0xLjQ3IDEuNjctMi43NCAzLjYxLTMuNzEgNS44NS03LjMyIDAuMjk0LTE1IDYuMTItMTUgMTUuNiA3ZS01IDguNjIgNi45MiAxNS43IDE1LjUgMTUuN2g4Ljc0di02Ljc1Yy0xLjg3LTEuNDUtMy4xOS0zLjU5LTMuNi01LjkzLTEuMTQtNS4yOCAzLjQ4LTExIDguOTItMTEgMi41Ny0wLjA5OTcgNS4xNSAwLjkzNSA2Ljk3IDIuNzMgMi4wOCAxLjg5IDMuMDYgNC44NSAyLjcyIDcuNjQtMC4yNSAyLjUxLTEuNTQgNS4wNS0zLjY2IDYuNTl2Ni43MWgzMS4ydi0xNC4zYy0xLjgzLTEuNDMtMy4xNS0zLjUyLTMuNTgtNS44MS0xLjIzLTUuMzYgMy40Mi0xMS4xIDguODktMTEuMSAyLjgzLTAuMTA0IDUuNjUgMS4xNSA3LjUgMy4yOSAzLjU4IDMuOCAyLjc1IDEwLjYtMS40NiAxMy43djE0LjJoOC42MmMxMi4xIDAgMjEuOS0xMC4xIDIxLjktMjIuMyAzZS01IC0xNC41LTEyLjgtMjMuNi0yNC43LTIyLTUuMzctOC44NS0xNC40LTEzLjUtMjMuNS0xMy41eiIgZmlsbD0iIzNjOGY0OSIvPjxwYXRoIGQ9Im00NC43IDkzIDcgMTcuM2gxLjk4bDcuMDUtMTcuM2gtMy4wNGwtNC45NyAxMi42LTQuOTItMTIuNnptMTguNSAwdjE3LjNoMi44NHYtNy4zNWgwLjczM2w1LjkyIDcuMzVoMy41OWwtNi4wOC03LjM3YzYuOTItMC40NSA2LjQ3LTkuOTQtMC41MjItOS45NHptMTUuMiAwdjE3LjNoMTEuNnYtMi42aC04Ljgxdi01aDcuOTZ2LTIuNWgtNy45NnYtNC42M2g4LjY4di0yLjZoLTguNjh6bS03OC40IDAuMjk3djE3aDEuODF2LTEzLjVsOS45NyAxMy41aDEuMjl2LTE3aC0xLjgzdjEzLjVsLTkuOTQtMTMuNXptNjYuMSAyLjE4aDMuNTFjMy42MyAwIDMuODIgNS4xNC0wLjAyNDggNS4xNGgtMy40OXptLTQ5LjkgOS4wNWMwIDYuMTYgNy40IDcuOTUgOS45NyAzLjh2MS45OWgxLjczdi0xMS42aC0xLjczdjEuOThjLTIuNi00LjEyLTkuOTctMi4zNi05Ljk3IDMuODZ6bTE0LjUgMGMwIDYuMTYgNy40IDcuOTUgOS45NyAzLjh2MS45OWgxLjczdi0xMS42aC0xLjczdjEuOThjLTIuNi00LjEyLTkuOTctMi4zNi05Ljk3IDMuODZ6bS00LjQtMC4wMjQ4YzAgNi4xMS04LjI5IDUuNjUtOC4yOSAwIDAtNS43MyA4LjI5LTYuMDYgOC4yOSAwem0xNC41IDBjMCA2LjExLTguMjkgNS42NS04LjI5IDAgMC01Ljc0IDguMjktNi4wNSA4LjI5IDB6IiBmaWxsPSIjM2M4ZjQ5Ii8+PC9zdmc+Cg=="
+    }
+  },
+  {
+    "model": "virtual_labs.virtuallab",
+    "pk": "test-virtual-lab-1",
+    "fields": {
+      "title": "Test Virtual Lab",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a maximus nunc, ut commodo leo. Aenean sit amet imperdiet ligula. Nam eu ultrices nulla. Fusce mattis ligula at nunc semper accumsan. Fusce commodo felis dignissim, dignissim erat non, pharetra lectus. Vestibulum eget gravida dui. Nullam blandit felis erat, eget dapibus massa tristique eget. Proin tincidunt tellus ut urna rutrum, ac laoreet mi pellentesque. Quisque nulla mauris, aliquam eu dapibus ut, vehicula fermentum enim. Aenean sed risus elit. Nunc pulvinar purus risus, in viverra odio sagittis sed. Curabitur ornare quis nulla sed tristique. Maecenas tristique sit amet erat vel rutrum. Nunc mattis bibendum dolor, nec gravida leo interdum ut. Quisque a pulvinar odio.",
+      "created": "2025-01-01T00:00:00.000Z",
+      "modified": "2025-01-01T00:00:00.000Z",
+      "deployment_url": "https://example.org",
+      "container_image": "",
+      "image": null
+    }
+  },
+  {
+    "model": "virtual_labs.virtuallab",
+    "pk": "test-virtual-lab-2",
+    "fields": {
+      "title": "Other Virtual Lab",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a maximus nunc, ut commodo leo. Aenean sit amet imperdiet ligula. Nam eu ultrices nulla. Fusce mattis ligula at nunc semper accumsan. Fusce commodo felis dignissim, dignissim erat non, pharetra lectus. Vestibulum eget gravida dui. Nullam blandit felis erat, eget dapibus massa tristique eget. Proin tincidunt tellus ut urna rutrum, ac laoreet mi pellentesque. Quisque nulla mauris, aliquam eu dapibus ut, vehicula fermentum enim. Aenean sed risus elit. Nunc pulvinar purus risus, in viverra odio sagittis sed. Curabitur ornare quis nulla sed tristique. Maecenas tristique sit amet erat vel rutrum. Nunc mattis bibendum dolor, nec gravida leo interdum ut. Quisque a pulvinar odio.",
+      "created": "2025-01-01T00:00:00.000Z",
+      "modified": "2025-01-01T00:00:00.000Z",
+      "deployment_url": "https://example.org/other",
+      "container_image": "",
+      "image": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI0bW0iIGhlaWdodD0iMTExbW0iIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDEyNCAxMTEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggaWQ9ImEiIGQ9Im03NS43IDIuMmUtNGMtOS4wNy0wLjAzNy0xOC4yIDQuNTEtMjMuNiAxMy4zLTQuNDQtMC40MDItOS4xOSAwLjY1MS0xMy4zIDMuMTUtNi4yOC0xLjY4LTEzLTEuMjUtMTkuNS0xLjI1aC0xOS4zdjY2aDE5LjNjOS4zIDAgMTQuNiAwLjA5NTggMTcuNiAwLjg4NyAyLjk3IDAuNzkxIDMuOTMgMS44NiA1Ljk2IDUuMzdoNC4zM2MyLjAzLTMuNTEgMi45OS00LjU4IDUuOTYtNS4zNyAyLjk3LTAuNzkxIDguMjctMC44ODcgMTcuNi0wLjg4N2gxOS4zdi0zOS40YzIuMjEtMC45NjUgMy43NS0zLjE3IDMuNzUtNS43MyAwLTMuNDUtMi44LTYuMjUtNi4yNS02LjI1cy02LjI1IDIuOC02LjI1IDYuMjVjMCAyLjUxIDEuNTQgNC43MyAzLjc1IDUuNzJ2MzQuNGgtMTQuM2MtOS4zMSAwLTE0LjctMC4wNTIyLTE4LjkgMS4wNS0xLjY4IDAuNDQ4LTMuMDkgMS4xNy00LjMzIDIuMTJ2LTMwLjFjMi4yMS0wLjk2NSAzLjc1LTMuMTcgMy43NS01LjczIDAtMy40NS0yLjgtNi4yNS02LjI1LTYuMjUtMy40NSAwLTYuMjUgMi44LTYuMjUgNi4yNSAwIDIuNTEgMS41NCA0LjczIDMuNzUgNS43MnYzMC4xYy0xLjI0LTAuOTUyLTIuNjUtMS42OC00LjMzLTIuMTMtNC4xNi0xLjExLTkuNTUtMS4wNS0xOC45LTEuMDVoLTE0LjN2LTU2aDE0LjNjNi43MyAwIDExLjMgMC4wNTMyIDE0LjUgMC4zOC0xLjQ3IDEuNjctMi43NCAzLjYxLTMuNzEgNS44NS03LjMyIDAuMjk0LTE1IDYuMTItMTUgMTUuNiA3ZS01IDguNjIgNi45MiAxNS43IDE1LjUgMTUuN2g4Ljc0di02Ljc1Yy0xLjg3LTEuNDUtMy4xOS0zLjU5LTMuNi01LjkzLTEuMTQtNS4yOCAzLjQ4LTExIDguOTItMTEgMi41Ny0wLjA5OTcgNS4xNSAwLjkzNSA2Ljk3IDIuNzMgMi4wOCAxLjg5IDMuMDYgNC44NSAyLjcyIDcuNjQtMC4yNSAyLjUxLTEuNTQgNS4wNS0zLjY2IDYuNTl2Ni43MWgzMS4ydi0xNC4zYy0xLjgzLTEuNDMtMy4xNS0zLjUyLTMuNTgtNS44MS0xLjIzLTUuMzYgMy40Mi0xMS4xIDguODktMTEuMSAyLjgzLTAuMTA0IDUuNjUgMS4xNSA3LjUgMy4yOSAzLjU4IDMuOCAyLjc1IDEwLjYtMS40NiAxMy43djE0LjJoOC42MmMxMi4xIDAgMjEuOS0xMC4xIDIxLjktMjIuMyAzZS01IC0xNC41LTEyLjgtMjMuNi0yNC43LTIyLTUuMzctOC44NS0xNC40LTEzLjUtMjMuNS0xMy41eiIgZmlsbD0iIzNjOGY0OSIvPjxwYXRoIGQ9Im00NC43IDkzIDcgMTcuM2gxLjk4bDcuMDUtMTcuM2gtMy4wNGwtNC45NyAxMi42LTQuOTItMTIuNnptMTguNSAwdjE3LjNoMi44NHYtNy4zNWgwLjczM2w1LjkyIDcuMzVoMy41OWwtNi4wOC03LjM3YzYuOTItMC40NSA2LjQ3LTkuOTQtMC41MjItOS45NHptMTUuMiAwdjE3LjNoMTEuNnYtMi42aC04Ljgxdi01aDcuOTZ2LTIuNWgtNy45NnYtNC42M2g4LjY4di0yLjZoLTguNjh6bS03OC40IDAuMjk3djE3aDEuODF2LTEzLjVsOS45NyAxMy41aDEuMjl2LTE3aC0xLjgzdjEzLjVsLTkuOTQtMTMuNXptNjYuMSAyLjE4aDMuNTFjMy42MyAwIDMuODIgNS4xNC0wLjAyNDggNS4xNGgtMy40OXptLTQ5LjkgOS4wNWMwIDYuMTYgNy40IDcuOTUgOS45NyAzLjh2MS45OWgxLjczdi0xMS42aC0xLjczdjEuOThjLTIuNi00LjEyLTkuOTctMi4zNi05Ljk3IDMuODZ6bTE0LjUgMGMwIDYuMTYgNy40IDcuOTUgOS45NyAzLjh2MS45OWgxLjczdi0xMS42aC0xLjczdjEuOThjLTIuNi00LjEyLTkuOTctMi4zNi05Ljk3IDMuODZ6bS00LjQtMC4wMjQ4YzAgNi4xMS04LjI5IDUuNjUtOC4yOSAwIDAtNS43MyA4LjI5LTYuMDYgOC4yOSAwem0xNC41IDBjMCA2LjExLTguMjkgNS42NS04LjI5IDAgMC01Ljc0IDguMjktNi4wNSA4LjI5IDB6IiBmaWxsPSIjM2M4ZjQ5Ii8+PC9zdmc+Cg=="
+    }
+  },
+  {
+    "model": "virtual_lab_instances.virtuallabinstance",
+    "pk": 1,
+    "fields": {
+      "virtual_lab": "test-virtual-lab-1",
+      "username": "Alice"
+    }
+  },
+  {
+    "model": "virtual_lab_instances.virtuallabinstance",
+    "pk": 2,
+    "fields": {
+      "virtual_lab": "test-virtual-lab-1",
+      "username": "Bob"
+    }
+  },
+  {
+    "model": "virtual_lab_instances.virtuallabinstance",
+    "pk": 3,
+    "fields": {
+      "virtual_lab": "test-virtual-lab-2",
+      "username": "Eve"
+    }
+  },
+  {
+    "model": "base_assets.baseasset",
+    "pk": "859840d2-d578-407b-8e67-e6d57d8d131a",
+    "fields": {
+      "title": "Test workflow",
+      "description": "",
+      "created": "2025-05-04T19:03:42.422Z",
+      "modified": "2025-05-04T19:03:42.422Z",
+      "owner": 2,
+      "virtual_lab": "test-virtual-lab-1"
+    }
+  },
+  {
+    "model": "workflows.workflow",
+    "pk": "859840d2-d578-407b-8e67-e6d57d8d131a",
+    "fields": {
+      "source_url": "https://example.org/source",
+      "run_url": "https://example.org/argo",
+      "status": "Succeeded",
+      "progress": "5/5"
+    }
+  }
+]

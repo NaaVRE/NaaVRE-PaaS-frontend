@@ -1,0 +1,42 @@
+name: vrepaas-ui
+
+services:
+
+  catalogue-service:
+    image: ghcr.io/naavre/naavre-catalogue-service:dev
+    ports:
+      - '127.0.0.1:44664:8000'
+    volumes:
+      - ./catalogue-fixtures.json:/code/app/fixtures.json
+    environment:
+      DEV_MODE: true
+      VERIFY_SSL: false
+      DJANGO_SUPERUSER_USERNAME: admin
+      DJANGO_SUPERUSER_PASSWORD: admin
+      DJANGO_SUPERUSER_EMAIL: example@example.org
+      DB_HOST: catalogue-db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres-password
+      DB_NAME: postgres
+      OIDC_CONFIGURATION_URL: http://keycloak:8080/realms/vre/.well-known/openid-configuration
+      CORS_ALLOWED_ORIGIN_REGEXES: http://localhost:3000
+
+  catalogue-db:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: postgres-password
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - '127.0.0.1:38410:8080'
+    volumes:
+      - ./keycloak-realm.json:/opt/keycloak/data/import/realm.json
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    command:
+      - start-dev
+      - --hostname-strict=false
+      - --import-realm
