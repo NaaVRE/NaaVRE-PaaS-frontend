@@ -77,7 +77,12 @@ export default function Page() {
         {vlabsLoading ? (
           <div className="rounded overflow-hidden shadow-lg bg-surface animate">
             <div>
-              <img className="h-30 m-1 object-cover" src={`${runtimeConfig.staticFolder}/vlab-loading.svg`}/>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="h-30 m-1 object-cover"
+                src={`${runtimeConfig.staticFolder}/vlab-loading.svg`}
+                alt="Loading virtual lab image"
+              />
               <div className="font-bold text-l mb-2 bg-primaryMuted text-onPrimary p-5">
                 <p className="animate-pulse">
                       <span
@@ -101,8 +106,12 @@ export default function Page() {
                     href={`/vl/${vlab.slug}`}
                   >
                     <div>
-                      <img className="h-30 m-1 object-cover"
-                           src={vlab.image || `${runtimeConfig.staticFolder}/vlab-default.svg`}/>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        className="h-30 m-1 object-cover"
+                        src={vlab.image || `${runtimeConfig.staticFolder}/vlab-default.svg`}
+                        alt={`${vlab.title} image`}
+                      />
                       <div className="font-bold text-l mb-2 bg-primary text-onPrimary p-5">{vlab.title}</div>
                       <div className="px-3 py-2">
                         <p className="text-onSurface line-clamp-2">

@@ -15,6 +15,7 @@ export default function Page() {
 
         <div className="flex flex-col sm:flex-row items-center mt-8">
           <Link href="https://www.lifewatch.eu/">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="LifeWatch ERIC logo"
               src={`${staticFolder}/logo-lifewatch-eric-medium.png`}
@@ -23,6 +24,7 @@ export default function Page() {
             />
           </Link>
           <Link href="https://www.uva.nl/en">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               alt="University of Amsterdam logo"
               src={`${staticFolder}/logo-uva-medium.png`}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import {Menu, Transition} from '@headlessui/react';
+import {Menu, MenuButton, MenuItem, MenuItems, Transition} from '@headlessui/react';
 import {useSession, signIn, signOut} from "next-auth/react"
 import React, {Fragment, useContext, useEffect} from "react";
 import {PaasConfigContext} from "@/context/paas-config";
@@ -44,6 +44,7 @@ export default function Nav() {
 
           <Link href='/' className="flex items-center md:w-full">
             {paasConfigLoading || (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={paasConfig.site_icon}
                 alt="Site icon"
@@ -85,7 +86,7 @@ export default function Nav() {
 
           <Menu as="div" className="md:hidden relative inline-block text-left">
             <div>
-              <Menu.Button
+              <MenuButton
                 className="w-full rounded bg-primary hover:bg-primaryDark text-onPrimary px-4 py-2">
                 <>
                   <svg xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +100,7 @@ export default function Nav() {
                   </svg>
                 </>
 
-              </Menu.Button>
+              </MenuButton>
             </div>
             <Transition
               as={Fragment}
@@ -110,24 +111,24 @@ export default function Nav() {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items
-                className="absolute right-0 md:left-0 mt-2 w-56 origin-top-right md:origin-top-left divide-y divide-gray-100 rounded bg-surface shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <MenuItems
+                className="absolute right-0 md:left-0 mt-2 w-56 origin-top-right md:origin-top-left divide-y divide-gray-100 rounded bg-surface shadow-lg ring-1 ring-gray-200 focus:outline-none">
                 <div className="px-1 py-1 ">
                   {menuPages.map((page) => {
                     return (
-                      <Menu.Item key={page.href}>
-                        {({active}) => (
-                          <Link
-                            href={page.href}
-                            className={clsx(
-                              page.href == pathname ? "text-primary" : "text-onSurface",
-                              active ? 'bg-primary !text-onPrimary' : 'text-onSurface',
-                              "group flex w-full items-center rounded px-2 py-2")}
-                          >
-                            {page.label}
-                          </Link>
-                        )}
-                      </Menu.Item>
+                      <MenuItem key={page.href}>
+                        <Link
+                          href={page.href}
+                          className={clsx(
+                            page.href == pathname ? "text-primary" : "text-onSurface",
+                            "data-active:bg-primary data-active:!text-onPrimary",
+                            "text-onSurface",
+                            "group flex w-full items-center rounded px-2 py-2"
+                          )}
+                        >
+                          {page.label}
+                        </Link>
+                      </MenuItem>
                     )
                   })}
                 </div>
@@ -139,23 +140,22 @@ export default function Nav() {
                       </p>
                     </div>
                   )}
-                  <Menu.Item>
-                    {({active}) => (
-                      <button
-                        className={clsx(
-                          active ? 'bg-primary text-onPrimary' : 'text-onSurface',
-                          status == "authenticated" ? "px-6" : "px-2",
-                          'group flex w-full items-center rounded py-2')}
-                        onClick={() => {
-                          status == "authenticated" ? signOut(signOutOptions) : signIn(signInProvider)
-                        }}
-                      >
-                        {status == "authenticated" ? "Logout" : "Login"}
-                      </button>
-                    )}
-                  </Menu.Item>
+                  <MenuItem>
+                    <button
+                      className={clsx(
+                        'data-active:bg-primary data-active:text-onPrimary',
+                        'text-onSurface',
+                        status == "authenticated" ? "px-6" : "px-2",
+                        'group flex w-full items-center rounded py-2')}
+                      onClick={() => (
+                        status == "authenticated" ? signOut(signOutOptions) : signIn(signInProvider)
+                      )}
+                    >
+                      {status == "authenticated" ? "Logout" : "Login"}
+                    </button>
+                  </MenuItem>
                 </div>
-              </Menu.Items>
+              </MenuItems>
             </Transition>
           </Menu>
 

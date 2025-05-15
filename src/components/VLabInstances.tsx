@@ -1,7 +1,6 @@
 "use client";
 
 import React, {useCallback, useContext, useEffect, useState} from "react";
-import getConfig from "next/config";
 import {VLab} from "@/types/vlab";
 import {useSession} from "next-auth/react";
 import {RuntimeConfigContext} from "@/context/runtime-config";
@@ -79,7 +78,7 @@ export default function VLabInstances({vlab, slug}: Props) {
       console.log(e)
       setBackendError(true)
     }
-  }, [publicRuntimeConfig.naavreCatalogueServiceUrl, slug]);
+  }, [publicRuntimeConfig.naavreCatalogueServiceUrl, session.data?.accessToken, session.status, slug]);
 
   useEffect(() => {
     fetchVlabInstances().then()
