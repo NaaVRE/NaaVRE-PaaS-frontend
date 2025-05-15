@@ -1,0 +1,22 @@
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: naavre-dev.minikube.test
+      paths:
+        - path: /vreapp/
+          pathType: Prefix
+
+conf:
+  # Open ID Connect (OIDC) configuration
+  oidc:
+    clientId: my-client-id
+    clientSecret: my-client-secret
+    # Issuer URL. For Keycloak, this must include the path to the realm, e.g. https://example.com/realms/my-realm
+    issuerUrl: https://naavre-dev.minikube.test/auth/realms/vre
+  # Random secret for NextAuth (https://next-auth.js.org/configuration/options#nextauth_secret)
+  secret: my-random-secret
+  # External services configuration
+  services:
+    # NaaVRE-catalogue-service API URL
+    naavreCatalogueServiceUrl: https://naavre-dev.minikube.test/naavre-catalogue-service

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "naavre-paas-frontend.fullname" . }}
+  labels:
+    {{- include "naavre-paas-frontend.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "naavre-paas-frontend.selectorLabels" . | nindent 4 }}
