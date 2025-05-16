@@ -9,6 +9,6 @@ data:
   NAAVRE_CATALOGUE_SERVICE_URL: "{{ .Values.conf.services.naavreCatalogueServiceUrl }}"
   NEXTAUTH_URL: "https://{{ index (index .Values.ingress.hosts 0) "host" }}/{{ .Values.conf.basePath | trimAll "/" }}/api/auth"
   NEXTAUTH_URL_INTERNAL: "http://localhost:3000/{{ .Values.conf.basePath | trimAll "/" }}/api/auth"
-  {{- if .Values.conf.verifySSL }}
+  {{- if not .Values.conf.verifySSL }}
   NODE_TLS_REJECT_UNAUTHORIZED: "0"
   {{- end }}
