@@ -1,0 +1,23 @@
+name: Lint
+
+on:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build app
+        run: |
+          docker build . --file docker/Dockerfile -t app:ci-test-build
+
+      - name: Wait for app
+        uses: raschmitt/wait-for-healthy-container/@v1
+        with:
+          container-name: app
+          timeout: 120
