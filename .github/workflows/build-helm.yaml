@@ -30,8 +30,8 @@ jobs:
       - name: Add version to Chart.yaml files
         run: |
           find . -name 'Chart.yaml' | while read file; do
-            sed -i "s/version: 0.0.0-dev/version: ${{ inputs.version }}/g" "$file"
-            sed -i "s/appVersion: 0.0.0-dev/appVersion: ${{ inputs.version }}/g" "$file"
+            yq e -i '.version = "${{ inputs.version }}"' "$file"
+            yq e -i '.appVersion = "${{ inputs.version }}"' "$file"
           done
         if: ${{ inputs.push }}
 
