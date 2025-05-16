@@ -16,6 +16,14 @@ jobs:
         run: |
           docker build . --file docker/Dockerfile -t app:ci-test-build
 
+      - name: Start app
+        run: |
+          docker run --rm -d \
+            --name app \
+            --health-cmd "wget 127.0.0.1:3000/vreapp" \
+            --health-interval 3s \
+            app:ci-test-build
+
       - name: Wait for app
         uses: raschmitt/wait-for-healthy-container/@v1
         with:

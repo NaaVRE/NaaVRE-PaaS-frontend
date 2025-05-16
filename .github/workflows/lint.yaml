@@ -13,4 +13,5 @@ jobs:
 
       - name: Lint
         run: |
+          npm ci
           npm run lint
