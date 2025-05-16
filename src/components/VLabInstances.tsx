@@ -12,8 +12,8 @@ type Props = {
 }
 
 interface VLabInstance {
-  vlab: string,
-  username: string,
+  virtual_lab: string,
+  user: string,
 }
 
 export default function VLabInstances({vlab, slug}: Props) {
@@ -104,10 +104,10 @@ export default function VLabInstances({vlab, slug}: Props) {
             {vlabInstances.map((vlab_instance) => {
               return (
                 <li
-                  key={vlab_instance.username}
+                  key={vlab_instance.user}
                   className="rounded-full m-1 px-2 bg-quinary text-onTertiary"
                 >
-                  {vlab_instance.username}
+                  {vlab_instance.user}
                 </li>
               )
             })}

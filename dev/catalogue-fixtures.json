@@ -8,7 +8,7 @@
       "is_superuser": false,
       "username": "user",
       "first_name": "",
-      "last_name": "",
+      "last_name": "Test User",
       "email": "",
       "is_staff": false,
       "is_active": true,
@@ -26,7 +26,7 @@
       "is_superuser": false,
       "username": "other-user",
       "first_name": "",
-      "last_name": "",
+      "last_name": "Other User",
       "email": "",
       "is_staff": false,
       "is_active": true,
@@ -90,23 +90,8 @@
     "pk": 1,
     "fields": {
       "virtual_lab": "test-virtual-lab-1",
-      "username": "Alice"
-    }
-  },
-  {
-    "model": "virtual_lab_instances.virtuallabinstance",
-    "pk": 2,
-    "fields": {
-      "virtual_lab": "test-virtual-lab-1",
-      "username": "Bob"
-    }
-  },
-  {
-    "model": "virtual_lab_instances.virtuallabinstance",
-    "pk": 3,
-    "fields": {
-      "virtual_lab": "test-virtual-lab-2",
-      "username": "Eve"
+      "user": 3,
+      "date": "2025-05-16T15:29:07"
     }
   },
   {
