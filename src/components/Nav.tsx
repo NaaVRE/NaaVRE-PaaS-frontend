@@ -19,20 +19,19 @@ const menuPages = [
   },
 ]
 
+const signOutOptions = {redirect: false}
+const signInProvider = 'keycloak'
+
 export default function Nav() {
 
   const {data: session, status} = useSession()
   const pathname = usePathname();
 
   const {paasConfig, paasConfigLoading} = useContext(PaasConfigContext)
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
-
-  const signOutOptions = {callbackUrl: basePath, shouldRedirect: true}
-  const signInProvider = 'keycloak'
 
   useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {
-      signIn().then();
+      signOut(signOutOptions).then();
     }
   }, [session]);
 
