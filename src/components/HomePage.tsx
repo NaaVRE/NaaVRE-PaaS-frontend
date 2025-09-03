@@ -6,6 +6,7 @@ import {PaasConfigContext} from "@/context/paas-config";
 import ReactMarkdown from "react-markdown";
 import {VLab} from "@/types/vlab";
 import Link from "next/link";
+import {LifeWatchUnifiedMenu} from "@/components/LifeWatchUnifiedMenu";
 
 export function HomePage() {
 
@@ -37,16 +38,19 @@ export function HomePage() {
     <>
 
       <div className="rounded shadow-lg bg-surface p-8">
-        <h1 className="text-2xl text-onSurface mb-8">
-          {paasConfigLoading ? (
-            <span className="animate-pulse">
-                  <span
-                    className="inline-block min-h-[1em] w-3/12 flex-auto cursor-wait bg-onSurface align-middle opacity-50"></span>
-                </span>
-          ) : (
-            paasConfig.title
-          )}
-        </h1>
+        <div className="flex">
+          <h1 className="text-2xl text-onSurface mb-8 flex-1">
+            {paasConfigLoading ? (
+              <span className="animate-pulse">
+                    <span
+                      className="inline-block min-h-[1em] w-3/12 flex-auto cursor-wait bg-onSurface align-middle opacity-50"></span>
+                  </span>
+            ) : (
+              paasConfig.title
+            )}
+          </h1>
+          <LifeWatchUnifiedMenu className="flex-none" />
+        </div>
         <div className="text-l text-onSurface">
           {paasConfigLoading ? (
             <span className="animate-pulse">
