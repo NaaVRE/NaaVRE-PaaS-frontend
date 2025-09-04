@@ -1,4 +1,5 @@
 import {VLab} from "@/types/vlab";
+import {VLabLabelChips} from "@/components/VLabLabelChips";
 
 export default function VLabDescription({
   vlab,
@@ -28,7 +29,12 @@ export default function VLabDescription({
           </span>
         ) : (
           <>
-            <p className="text-4xl font-sans">{vlab.title}</p>
+            <div
+              className="flex justify-between items-center"
+            >
+              <p className="text-4xl font-sans">{vlab.title}</p>
+              <VLabLabelChips labels={vlab.labels} />
+            </div>
             <p className="mt-5 text-justify">{vlab.description}</p>
           </>
         )
