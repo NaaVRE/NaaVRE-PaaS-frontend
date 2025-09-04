@@ -10,6 +10,7 @@ import {signIn, useSession} from "next-auth/react";
 
 const defaultVLab: VLab = {
   title: "Loading ..",
+  labels: [],
   slug: "",
   description: "Loading ..",
   deployment_url: "",

@@ -60,10 +60,39 @@
     }
   },
   {
+    "model": "virtual_labs.virtuallablabel",
+    "pk": 1,
+    "fields": {
+      "title": "Test Label",
+      "color": "#a2eeef"
+    }
+  },
+  {
+    "model": "virtual_labs.virtuallablabel",
+    "pk": 2,
+    "fields": {
+      "title": "Other Label",
+      "color": "#008672"
+    }
+  },
+  {
+    "model": "virtual_labs.virtuallablabel",
+    "pk": 3,
+    "fields": {
+      "title": "A long label to break things",
+      "color": "#ffffff"
+    }
+  },
+  {
     "model": "virtual_labs.virtuallab",
     "pk": "test-virtual-lab-1",
     "fields": {
       "title": "Test Virtual Lab",
+      "labels": [
+        1,
+        2,
+        3
+      ],
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a maximus nunc, ut commodo leo. Aenean sit amet imperdiet ligula. Nam eu ultrices nulla. Fusce mattis ligula at nunc semper accumsan. Fusce commodo felis dignissim, dignissim erat non, pharetra lectus. Vestibulum eget gravida dui. Nullam blandit felis erat, eget dapibus massa tristique eget. Proin tincidunt tellus ut urna rutrum, ac laoreet mi pellentesque. Quisque nulla mauris, aliquam eu dapibus ut, vehicula fermentum enim. Aenean sed risus elit. Nunc pulvinar purus risus, in viverra odio sagittis sed. Curabitur ornare quis nulla sed tristique. Maecenas tristique sit amet erat vel rutrum. Nunc mattis bibendum dolor, nec gravida leo interdum ut. Quisque a pulvinar odio.",
       "created": "2025-01-01T00:00:00.000Z",
       "modified": "2025-01-01T00:00:00.000Z",
@@ -77,6 +106,7 @@
     "pk": "test-virtual-lab-2",
     "fields": {
       "title": "Other Virtual Lab",
+      "labels": [],
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a maximus nunc, ut commodo leo. Aenean sit amet imperdiet ligula. Nam eu ultrices nulla. Fusce mattis ligula at nunc semper accumsan. Fusce commodo felis dignissim, dignissim erat non, pharetra lectus. Vestibulum eget gravida dui. Nullam blandit felis erat, eget dapibus massa tristique eget. Proin tincidunt tellus ut urna rutrum, ac laoreet mi pellentesque. Quisque nulla mauris, aliquam eu dapibus ut, vehicula fermentum enim. Aenean sed risus elit. Nunc pulvinar purus risus, in viverra odio sagittis sed. Curabitur ornare quis nulla sed tristique. Maecenas tristique sit amet erat vel rutrum. Nunc mattis bibendum dolor, nec gravida leo interdum ut. Quisque a pulvinar odio.",
       "created": "2025-01-01T00:00:00.000Z",
       "modified": "2025-01-01T00:00:00.000Z",

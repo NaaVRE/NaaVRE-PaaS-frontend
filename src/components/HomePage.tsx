@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import {VLab} from "@/types/vlab";
 import Link from "next/link";
 import {LifeWatchUnifiedMenu} from "@/components/LifeWatchUnifiedMenu";
+import {VLabLabelChips} from "@/components/VLabLabelChips";
 
 export function HomePage() {
 
@@ -111,12 +112,17 @@ export function HomePage() {
                     href={`/vl/${vlab.slug}`}
                   >
                     <div>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        className="h-30 m-1 object-cover"
-                        src={vlab.image || `${basePath}/vlab-default.svg`}
-                        alt={`${vlab.title} image`}
-                      />
+                      <div
+                        className="flex justify-between items-end"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          className="h-30 m-1 object-cover"
+                          src={vlab.image || `${basePath}/vlab-default.svg`}
+                          alt={`${vlab.title} image`}
+                        />
+                        <VLabLabelChips labels={vlab.labels} />
+                      </div>
                       <div className="font-bold text-l mb-2 bg-primary text-onPrimary p-5">{vlab.title}</div>
                       <div className="px-3 py-2">
                         <p className="text-onSurface line-clamp-2">
