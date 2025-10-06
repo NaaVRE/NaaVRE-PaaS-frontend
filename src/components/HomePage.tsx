@@ -6,7 +6,7 @@ import {PaasConfigContext} from "@/context/paas-config";
 import ReactMarkdown from "react-markdown";
 import {VLab} from "@/types/vlab";
 import Link from "next/link";
-import {LifeWatchUnifiedMenu} from "@/components/LifeWatchUnifiedMenu";
+import {LifeWatchUnifiedMenu} from "@/components/lifewatch-unified-menu/menu";
 import {VLabLabelChips} from "@/components/VLabLabelChips";
 
 export function HomePage() {
