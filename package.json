@@ -15,7 +15,7 @@
     "clsx": "^2.1.1",
     "contrast-color": "^1.0.1",
     "leaflet": "^1.9.4",
-    "next": "15.3.3",
+    "next": "15.5.4",
     "next-auth": "^4.24.11",
     "object-hash": "^3.0.0",
     "react": "^19.0.0",
