@@ -1,4 +1,4 @@
-FROM node:24-alpine AS base
+FROM node:25-alpine AS base
 RUN apk update && apk add --no-cache docker-cli
 
 # Install dependencies only when needed
