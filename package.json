@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/titillium-web": "^5.2.6",
+    "@fontsource/titillium-web": "^5.2.8",
     "@headlessui/react": "^2.2.4",
     "@tabler/icons-react": "^3.35.0",
     "clsx": "^2.1.1",
