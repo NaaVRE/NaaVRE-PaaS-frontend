@@ -16,7 +16,7 @@
     "contrast-color": "^1.0.1",
     "leaflet": "^1.9.4",
     "next": "15.5.7",
-    "next-auth": "^4.24.11",
+    "next-auth": "^4.24.12",
     "object-hash": "^3.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.1.1",
