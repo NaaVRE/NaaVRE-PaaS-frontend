@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { React, useContext } from "react";
+import { useContext } from "react";
 import { PaasConfigContext } from "@/context/paas-config";
 
 export default function Page() {
