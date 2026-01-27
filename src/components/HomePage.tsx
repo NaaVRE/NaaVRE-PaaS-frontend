@@ -3,7 +3,7 @@
 import {useContext, useEffect, useState} from "react";
 import {RuntimeConfigContext} from "@/context/runtime-config";
 import {PaasConfigContext} from "@/context/paas-config";
-import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
 import {VLab} from "@/types/vlab";
 import Link from "next/link";
 import {LifeWatchUnifiedMenu} from "@/components/lifewatch-unified-menu/menu";
@@ -59,8 +59,8 @@ export function HomePage() {
                     className="inline-block min-h-[1em] w-full flex-auto cursor-wait bg-onSurface align-middle opacity-50"></span>
                 </span>
           ) : (
-            <div className="prose">
-              <ReactMarkdown>{paasConfig.description}</ReactMarkdown>
+            <div className="prose max-w-none">
+              <Markdown>{paasConfig.description}</Markdown>
             </div>
           )}
         </div>
