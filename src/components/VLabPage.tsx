@@ -8,6 +8,8 @@ import VLAbAssets from "@/components/VLAbAssets";
 import VLabInstances from "@/components/VLabInstances";
 import {signIn, useSession} from "next-auth/react";
 
+const signInTutorialUrl = "https://naavre.net/docs/tutorials/#signing-in";
+
 const defaultVLab: VLab = {
   title: "Loading ..",
   labels: [],
@@ -70,10 +72,23 @@ export default function VLabPage({slug}: { slug: string }) {
           </div>
         </>
       ) : (
-        <div className="rounded shadow-lg bg-white p-8">
-          <p className="text-primaryMuted text-center">
-            <a onClick={() => signIn('keycloak')} href="#">
+        <div className="rounded shadow-lg bg-white p-8 space-y-8">
+          <p className="text-center">
+            <a
+              onClick={() => signIn('keycloak')}
+              href="#"
+              className="text-primary underline"
+            >
               Login to see details
+            </a>
+          </p>
+          <p className="text-center text-primaryMuted">
+            New to NaaVRE? Follow the{' '}
+            <a
+              href={signInTutorialUrl}
+              className="text-primary underline"
+            >
+              login tutorial
             </a>
           </p>
         </div>
