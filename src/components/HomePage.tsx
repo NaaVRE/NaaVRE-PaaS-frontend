@@ -66,7 +66,9 @@ export function HomePage() {
           />
           <VLabsList
             listUrl={`${naavreCatalogueServiceUrl}/virtual-labs/`}
+            labelsListUrl={`${naavreCatalogueServiceUrl}/virtual-lab-labels/`}
             title="All virtual labs"
+            enableFilters={true}
           />
         </>
       )}

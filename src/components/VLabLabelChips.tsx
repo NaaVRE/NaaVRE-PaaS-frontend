@@ -1,25 +1,46 @@
+import {ComponentPropsWithoutRef, ElementType, ReactNode} from "react";
+import clsx from "clsx";
 import {VLabLabel} from "@/types/vlab";
 import {contrastColor} from "contrast-color";
 
-function VLabLabelChip({label}: {label: VLabLabel}) {
+type VLabLabelChipProps<T extends ElementType> = {
+  label: VLabLabel;
+  start?: ReactNode;
+  className?: string;
+  as?: T;
+} & Omit<ComponentPropsWithoutRef<T>, 'as' | 'label'>;
+
+export function VLabLabelChip<T extends ElementType = 'div'>({
+  label,
+  start,
+  className,
+  as,
+  ...props
+}: VLabLabelChipProps<T>){
+  const Component = as ?? 'div'
   const bgColor = label.color;
   const textColor = contrastColor({bgColor: bgColor});
   const borderColor = contrastColor({bgColor: bgColor, fgLightColor: 'transparent', fgDarkColor: '#bababa', threshold: 240});
+  const style: object = {
+        "--bg-color": bgColor,
+        "--text-color": textColor,
+        "--border-color": borderColor,
+      }
   return (
-    <div
-      style={{
-        backgroundColor: bgColor,
-        color: textColor,
-        borderColor: borderColor,
-      }}
-      className="m-1 rounded-full border"
+    <Component
+      style={style}
+      className={clsx(
+        "m-1 rounded-full border",
+        "px-2 py-0 line-clamp-1",
+        "flex gap-1",
+        "bg-(--bg-color) border-(--border-color) text-(--text-color)",
+        className
+      )}
+      {...props}
     >
-      <div
-        className="px-2 py-0 line-clamp-1"
-      >
-        {label.title}
-      </div>
-    </div>
+      {start ?? ''}
+      <span>{label.title}</span>
+    </Component>
   )
 }
 
