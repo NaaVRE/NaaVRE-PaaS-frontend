@@ -223,7 +223,7 @@ export function VLabsList({
                 key={vlab.slug}
                 className="
                   rounded overflow-hidden shadow-lg bg-surface
-                    focus-within:ring-2 focus-within:ring-primary focus-within:outline-none
+                    [&:has(:focus-visible)]:ring-2 [&:has(:focus-visible)]:ring-primary [&:has(:focus-visible)]:outline-none
                 "
               >
                 <Link
