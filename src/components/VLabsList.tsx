@@ -107,10 +107,7 @@ export function VLabsList({
         return res.json()
       })
       .then((data) => {
-        // Make results unique by VLab.slug, to work around NaaVRE-catalogue-service#157
-        const results = [
-          ...new Map((data.results as Array<VLab>).map(vlab => [vlab.slug, vlab])).values()];
-        setVlabs(results);
+        setVlabs(data.results);
       })
       .catch((exception) => {
         console.log(exception)
@@ -143,7 +140,7 @@ export function VLabsList({
 
   return (
     <>
-      {title && (
+      {title && (vlabs.length > 0 || enableFilters) && (
         <div className='gap-4 text-lg'>
           <h2>{title}</h2>
         </div>
