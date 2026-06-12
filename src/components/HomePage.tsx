@@ -1,6 +1,6 @@
 "use client";
 
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {RuntimeConfigContext} from "@/context/runtime-config";
 import {PaasConfigContext} from "@/context/paas-config";
 import Markdown from "react-markdown";
@@ -57,7 +57,18 @@ export function HomePage() {
       </div>
 
       {naavreCatalogueServiceUrl !== null && (
-        <VLabsList listUrl={`${naavreCatalogueServiceUrl}/virtual-labs/`} />
+        <>
+          <VLabsList
+            listUrl={`${naavreCatalogueServiceUrl}/virtual-labs/?is_pinned=true&ordering=pinned_order`}
+            title="Pinned virtual labs"
+            showErrors={false}
+            showLoading={false}
+          />
+          <VLabsList
+            listUrl={`${naavreCatalogueServiceUrl}/virtual-labs/`}
+            title="All virtual labs"
+          />
+        </>
       )}
     </>
   )
