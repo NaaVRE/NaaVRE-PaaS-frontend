@@ -92,6 +92,7 @@ export default function VLabPage({slug}: { slug: string }) {
               New to NaaVRE? Follow the{' '}
               <a
                 href={signInTutorialUrl}
+                target="_blank"
                 className="text-primary underline"
               >
                 login tutorial
