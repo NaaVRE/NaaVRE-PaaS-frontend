@@ -3,7 +3,7 @@ name: vrepaas-ui
 services:
 
   catalogue-service:
-    image: ghcr.io/naavre/naavre-catalogue-service:v0.6.5
+    image: ghcr.io/naavre/naavre-catalogue-service:v0.6.6
     ports:
       - '127.0.0.1:44664:8000'
       - '127.0.0.1:9000:9000'
