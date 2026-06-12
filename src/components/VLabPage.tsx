@@ -14,6 +14,7 @@ const defaultVLab: VLab = {
   slug: "",
   description: "Loading ..",
   deployment_url: "",
+  additional_actions: [],
   image: "",
 }
 

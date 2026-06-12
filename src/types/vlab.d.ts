@@ -9,5 +9,10 @@ export interface VLab {
   labels: Array<VLabLabel>,
   description: string,
   deployment_url: string,
+  additional_actions: Array<{
+    label: string;
+    url: string;
+    color: string;
+  }>
   image: string | null,
 }

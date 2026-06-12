@@ -97,6 +97,13 @@
       "created": "2025-01-01T00:00:00.000Z",
       "modified": "2025-01-01T00:00:00.000Z",
       "is_pinned": true,
+      "additional_actions": [
+        {
+          "label": "Launch training instance",
+          "url": "https://example.org/training",
+          "color": "#3c8f49"
+        }
+      ],
       "deployment_url": "https://example.org",
       "container_image": "",
       "image": null
