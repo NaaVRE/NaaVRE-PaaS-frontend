@@ -71,7 +71,7 @@ export function VLabsList({
       const labelsStr = `labels=${Array.from(activeLabels).join(",")}`;
       paramsStr = paramsStr ? `${paramsStr}&${labelsStr}` : labelsStr;
     }
-    router.replace(`${pathname}?${paramsStr}`);
+    router.replace(`${pathname}?${paramsStr}`, {scroll: false});
   }, [router, pathname, searchParams, enableFilters, debouncedSearch, activeLabels])
 
   // Fetch labels
