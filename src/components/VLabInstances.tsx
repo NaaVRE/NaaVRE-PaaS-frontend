@@ -187,7 +187,7 @@ export default function VLabInstances({vlab, slug}: Props) {
             href={vlab.deployment_url}
             onClick={registerInstance}
           >
-            Launch my instance
+            Start Virtual Lab
           </VLabActionButton>
           {vlab.additional_actions?.map(({label, url, color}) => (
             <VLabActionButton
