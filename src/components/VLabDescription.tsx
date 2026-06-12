@@ -35,7 +35,9 @@ export default function VLabDescription({
               <p className="text-4xl font-sans">{vlab.title}</p>
               <VLabLabelChips labels={vlab.labels} />
             </div>
-            <p className="mt-5 text-justify">{vlab.description}</p>
+            <p className="mt-5 prose max-w-none text-justify">
+              {vlab.description}
+            </p>
           </>
         )
       )}

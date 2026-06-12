@@ -8,6 +8,7 @@ export interface VLab {
   slug: string,
   labels: Array<VLabLabel>,
   description: string,
+  long_description: string,
   deployment_url: string,
   additional_actions: Array<{
     label: string;
