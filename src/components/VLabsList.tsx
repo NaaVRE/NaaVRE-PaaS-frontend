@@ -68,7 +68,12 @@ export function VLabsList({
     params.delete("labels");
     let paramsStr = params.toString()
     if (enableFilters && activeLabels.size > 0) {
-      const labelsStr = `labels=${Array.from(activeLabels).join(",")}`;
+      // URL-encode labels...
+      const activeLabelsEncoded = Array.from(activeLabels).map(label => (
+        new URLSearchParams([['', label]]).toString().slice(1)
+      ))
+      // ... but keep literal commas
+      const labelsStr = `labels=${activeLabelsEncoded.join(",")}`;
       paramsStr = paramsStr ? `${paramsStr}&${labelsStr}` : labelsStr;
     }
     router.replace(`${pathname}?${paramsStr}`, {scroll: false});
