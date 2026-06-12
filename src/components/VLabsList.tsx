@@ -189,9 +189,12 @@ export function VLabsList({
       )}
 
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+      <ul
+        aria-label={`${title} list`}
+        className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
+      >
         {loading && showLoading ? (
-          <div className="rounded overflow-hidden shadow-lg bg-surface animate">
+          <li className="rounded overflow-hidden shadow-lg bg-surface animate">
             <div>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -212,13 +215,22 @@ export function VLabsList({
                 </p>
               </div>
             </div>
-          </div>
+          </li>
         ) : (
           vlabs.map((vlab: VLab) => {
             return (
-              <div key={vlab.slug} className="rounded overflow-hidden shadow-lg bg-surface">
+              <li
+                key={vlab.slug}
+                className="
+                  rounded overflow-hidden shadow-lg bg-surface
+                    focus-within:ring-2 focus-within:ring-primary focus-within:outline-none
+                "
+              >
                 <Link
+                  aria-label={vlab.title}
                   href={`/vl/${vlab.slug}`}
+                  className="
+                  "
                 >
                   <div>
                     <div
@@ -240,11 +252,11 @@ export function VLabsList({
                     </div>
                   </div>
                 </Link>
-              </div>
+              </li>
             );
           })
         )}
-      </div>
+      </ul>
     </>
   )
 }
