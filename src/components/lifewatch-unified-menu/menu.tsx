@@ -72,9 +72,10 @@ export function LifeWatchUnifiedMenu({
     <Menu as="div" className={className}>
       <div>
         <MenuButton
+          aria-label="LifeWatch ERIC services"
           className="hover:bg-surfaceContainer p-1 rounded-full hover:cursor-pointer"
         >
-          <IconGridDots/>
+          <IconGridDots aria-hidden={true}/>
         </MenuButton>
       </div>
       <Transition
@@ -98,7 +99,10 @@ export function LifeWatchUnifiedMenu({
         >
           {links.map(link => {
             return (
-              <MenuItem key={link.href}>
+              <MenuItem
+                key={link.href}
+                aria-label={link.label}
+              >
                 <Link
                   target="_blank"
                   href={link.href}
@@ -110,7 +114,7 @@ export function LifeWatchUnifiedMenu({
                     "flex flex-col items-center"
                   )}
                 >
-                  <Image className="size-7 mb-1.5" src={link.svg} alt={`${link.label} icon`}/>
+                  <Image className="size-7 mb-1.5" src={link.svg} alt=""/>
                   <span className="">{link.label}</span>
                 </Link>
               </MenuItem>

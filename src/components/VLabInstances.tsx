@@ -5,6 +5,58 @@ import {VLab} from "@/types/vlab";
 import {useSession} from "next-auth/react";
 import {RuntimeConfigContext} from "@/context/runtime-config";
 import {getRefreshedAccessToken} from "@/lib/auth";
+import {contrastColor} from "contrast-color";
+
+function VLabActionButton({
+  children,
+  href,
+  onClick,
+  color,
+}: {
+  children: React.ReactNode;
+  href: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  color?: string;
+}) {
+  let style = {}
+  if (color === undefined) {
+    style = {
+      "--bg-color": "var(--color-primary)",
+      "--text-color": "var(--color-onPrimary)",
+    }
+  } else {
+    const bgColor = color;
+    const textColor = contrastColor({bgColor: bgColor});
+    style = {
+      "--bg-color": bgColor,
+      "--text-color": textColor,
+    }
+  }
+
+  return (
+    <a
+      target="blank"
+      href={href}
+      onClick={onClick}
+    >
+      <button
+        className="
+          py-2 px-4
+          rounded border
+          bg-(--bg-color)
+          border-(--bg-color)
+          text-(--text-color)
+          hover:bg-transparent
+          hover:text-(--btn-color)
+          cursor-pointer
+        "
+        style={style}
+      >
+        {children}
+      </button>
+    </a>
+  )
+}
 
 type Props = {
   vlab: VLab,
@@ -130,18 +182,23 @@ export default function VLabInstances({vlab, slug}: Props) {
             Hide my instance from this list
           </label>
         </div>
-        <div>
-          <a
-            target="blank"
+        <div className="flex flex-wrap gap-2">
+          <VLabActionButton
             href={vlab.deployment_url}
             onClick={registerInstance}
           >
-            <button
-              className="bg-primary hover:bg-primaryDark text-onPrimary font-bold py-2 px-4 rounded"
+            Start Virtual Lab
+          </VLabActionButton>
+          {vlab.additional_actions?.map(({label, url, color}) => (
+            <VLabActionButton
+              key={url}
+              href={url}
+              onClick={registerInstance}
+              color={color}
             >
-              Launch my instance
-            </button>
-          </a>
+              {label}
+            </VLabActionButton>
+          ))}
         </div>
       </div>
     </div>
