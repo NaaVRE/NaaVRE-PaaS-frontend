@@ -1,0 +1,8 @@
+{
+  "name": "naavre-paas-frontend-dev",
+  "forwardPorts": [
+    29300
+  ],
+  "dockerComposeFile": "../dev/docker-compose.yaml",
+  "service": "app",
+}

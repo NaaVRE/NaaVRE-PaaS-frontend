@@ -154,7 +154,7 @@
       "name": "NaaVRE PaaS UI",
       "description": "",
       "baseUrl": "",
-      "rootUrl": "http://localhost:3000",
+      "rootUrl": "http://localhost:29300",
       "redirectUris": [
         "/*"
       ],
