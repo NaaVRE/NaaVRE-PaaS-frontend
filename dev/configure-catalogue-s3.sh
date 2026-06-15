@@ -24,7 +24,7 @@ cat << EOF > policy.json
 EOF
 
 mc alias set minio/ \
-  http://catalogue-service:9000 "$MINIO_ROOT_USER" "$MINIO_ROOT_PASSWORD"
+  http://localhost:29900 "$MINIO_ROOT_USER" "$MINIO_ROOT_PASSWORD"
 mc mb "minio/$BUCKET_NAME" || echo "continuing"
 mc admin accesskey create minio/ "$MINIO_ROOT_USER" \
   --policy policy.json \
