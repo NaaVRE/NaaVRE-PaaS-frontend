@@ -1,5 +1,5 @@
 import {VLab} from "@/types/vlab";
-import Markdown from "react-markdown";
+import Markdown from "@/components/Markdown";
 
 export default function VLabLongDescription({
   vlab,
