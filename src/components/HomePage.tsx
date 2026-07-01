@@ -3,7 +3,7 @@
 import {useContext} from "react";
 import {RuntimeConfigContext} from "@/context/runtime-config";
 import {PaasConfigContext} from "@/context/paas-config";
-import Markdown from "react-markdown";
+import Markdown from "@/components/Markdown";
 import {LifeWatchUnifiedMenu} from "@/components/lifewatch-unified-menu/menu";
 import {VLabsList} from "@/components/VLabsList";
 
