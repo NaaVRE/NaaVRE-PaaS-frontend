@@ -22,7 +22,7 @@ function isVideoCandidate(href?: string) {
 
 function Link({ href, children, title }: {
   href?: string;
-  children: ReactNode;
+  children?: ReactNode;
   title?: string;
 }) {
   const [videoFailed, setVideoFailed] = useState(false);
