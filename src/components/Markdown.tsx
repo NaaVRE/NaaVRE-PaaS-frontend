@@ -1,7 +1,8 @@
 import _Markdown, {Options} from "react-markdown";
 import remarkGfm from 'remark-gfm';
+import { useEffect, useState, type ReactNode } from "react";
 
-function isVideoUrl(href?: string) {
+function isVideoCandidate(href?: string) {
   if (!href) return false;
 
   try {
@@ -19,22 +20,42 @@ function isVideoUrl(href?: string) {
   }
 }
 
+function Link({ href, children, title }: {
+  href?: string;
+  children: ReactNode;
+  title?: string;
+}) {
+  const [videoFailed, setVideoFailed] = useState(false);
+
+  useEffect(() => {
+    setVideoFailed(false);
+  }, [href]);
+
+  if (isVideoCandidate(href) && !videoFailed) {
+    return (
+      <video
+        src={href}
+        controls
+        preload="metadata"
+        playsInline
+        onError={() => setVideoFailed(true)}
+      />
+    );
+  }
+
+  return (
+    <a href={href} title={title}>
+      {children}
+    </a>
+  );
+}
+
 export default function Markdown(args: Options) {
   return (
     <_Markdown
       remarkPlugins={[remarkGfm]}
       components={{
-        a({ href, children, title }) {
-              if (isVideoUrl(href)) {
-                return <video src={href} controls preload="metadata" playsInline />;
-              }
-
-              return (
-                <a href={href} title={title}>
-                  {children}
-                </a>
-              );
-            },
+        a: Link,
       }}
       {...args}
       />
