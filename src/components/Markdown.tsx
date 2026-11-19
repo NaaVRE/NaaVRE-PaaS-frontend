@@ -1,23 +1,51 @@
 import _Markdown, {Options} from "react-markdown";
 import remarkGfm from 'remark-gfm';
-import { useEffect, useState, type ReactNode } from "react";
+import type { ReactNode, VideoHTMLAttributes } from "react";
 
-function isVideoCandidate(href?: string) {
-  if (!href) return false;
+type MarkdownNode = {
+  type: string;
+  value?: string;
+  children?: MarkdownNode[];
+};
 
-  try {
-    const url = new URL(href);
+function remarkVideoTags() {
+  return (tree: MarkdownNode) => {
+    function transform(node: MarkdownNode) {
+      if (!node.children) return;
 
-    const isGitHubAttachment =
-      url.hostname === "github.com" &&
-      url.pathname.startsWith("/user-attachments/assets/");
+      node.children = node.children.map((child) => {
+        if (child.type === "html" && child.value) {
+          const videoTag = child.value.match(/^<video\b([^>]*)>\s*(?:<\/video\s*>)?$/i);
+          const src = videoTag?.[1].match(/\bsrc\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))/i);
+          const href = src?.[1] ?? src?.[2] ?? src?.[3];
 
-    const hasVideoExtension = /\.(mp4|webm|ogg)$/i.test(url.pathname);
+          if (href) {
+            return {
+              type: "video",
+              data: {
+                hName: "video",
+                hProperties: {
+                  src: href,
+                  controls: true,
+                  preload: "metadata",
+                  playsInline: true,
+                },
+              },
+            };
+          }
+        }
 
-    return isGitHubAttachment || hasVideoExtension;
-  } catch {
-    return false;
-  }
+        transform(child);
+        return child;
+      });
+    }
+
+    transform(tree);
+  };
+}
+
+function Video({src}: VideoHTMLAttributes<HTMLVideoElement> & {node?: unknown}) {
+  return <video src={src} controls preload="metadata" playsInline />;
 }
 
 function Link({ href, children, title }: {
@@ -25,24 +53,6 @@ function Link({ href, children, title }: {
   children?: ReactNode;
   title?: string;
 }) {
-  const [videoFailed, setVideoFailed] = useState(false);
-
-  useEffect(() => {
-    setVideoFailed(false);
-  }, [href]);
-
-  if (isVideoCandidate(href) && !videoFailed) {
-    return (
-      <video
-        src={href}
-        controls
-        preload="metadata"
-        playsInline
-        onError={() => setVideoFailed(true)}
-      />
-    );
-  }
-
   return (
     <a href={href} title={title}>
       {children}
@@ -53,11 +63,12 @@ function Link({ href, children, title }: {
 export default function Markdown(args: Options) {
   return (
     <_Markdown
-      remarkPlugins={[remarkGfm]}
+      {...args}
+      remarkPlugins={[remarkGfm, remarkVideoTags]}
       components={{
         a: Link,
+        video: Video,
       }}
-      {...args}
-      />
+    />
   );
 }
