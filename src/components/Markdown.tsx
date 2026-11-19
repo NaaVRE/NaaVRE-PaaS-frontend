@@ -60,7 +60,7 @@ function Link({ href, children, title }: {
   );
 }
 
-export default function Markdown(args: Options) {
+function AddVideoPlugins(args: Options) {
   return (
     <_Markdown
       {...args}
@@ -71,4 +71,8 @@ export default function Markdown(args: Options) {
       }}
     />
   );
+}
+
+export default function Markdown(args: Options) {
+  return AddVideoPlugins(args);
 }
